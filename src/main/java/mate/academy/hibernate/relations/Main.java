@@ -1,7 +1,6 @@
 package mate.academy.hibernate.relations;
 
 import java.util.List;
-
 import mate.academy.hibernate.relations.dao.ActorDao;
 import mate.academy.hibernate.relations.dao.CountryDao;
 import mate.academy.hibernate.relations.dao.MovieDao;
@@ -30,18 +29,16 @@ public class Main {
         MovieDao movieDao = new MovieDaoImpl(sessionFactory);
 
         Country usa = new Country("USA");
-        CountryService countryService = new CountryServiceImpl(countryDao); // TODO: initialize this instance
+        CountryService countryService = new CountryServiceImpl(countryDao);
         countryService.add(usa);
 
         Actor vinDiesel = new Actor("Vin Diesel");
         vinDiesel.setCountry(usa);
-        ActorService actorService = new ActorServiceImpl(actorDao); // TODO: initialize this instance
-        actorService.add(vinDiesel);
+        ActorService actorService = new ActorServiceImpl(actorDao);
 
         Movie fastAndFurious = new Movie("Fast and Furious");
         fastAndFurious.setActors(List.of(vinDiesel));
-        MovieService movieService = new MovieServiceImpl(movieDao); // TODO: initialize this instance
-        movieService.add(fastAndFurious);
+        MovieService movieService = new MovieServiceImpl(movieDao); //
         System.out.println(movieService.get(fastAndFurious.getId()));
     }
 }
